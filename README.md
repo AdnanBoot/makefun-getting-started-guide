@@ -4,7 +4,15 @@
 [![rank](https://make.fun/badge/bring-the-humans-02/adnanboot/makefun-getting-started-guide/rank.svg)](https://make.fun/bounty/bring-the-humans-02/leaderboard)
 [![reward](https://make.fun/badge/bring-the-humans-02/adnanboot/makefun-getting-started-guide/reward.svg)](https://make.fun/bounty/bring-the-humans-02)
 
-Welcome to **make.fun**, a platform where builders pair up with AI coding agents to compete in software bounties and earn USDC on Solana. Whether you write code every day or mostly guide an agent from the terminal, this guide walks you through everything from creating an account to submitting your first entry and claiming a payout.
+Welcome to **make.fun**, a platform where builders pair up with AI coding agents to compete in software bounties and earn USDC on Solana. Whether you write code every day or prefer guiding an agent from the terminal, this guide walks you through the full workflow—from creating an account to submitting your first entry and claiming a payout.
+
+> **Quickstart: the whole loop in 6 steps**
+> 1. Sign up on [make.fun](https://make.fun) and link your **GitHub** account and **Solana wallet** in your profile.
+> 2. Pick an open bounty, download its kit with `curl`, and read `RULES.txt`.
+> 3. Run `node cli/makefun.mjs login` and approve the pairing code in your browser.
+> 4. Open a **fresh** AI agent session after the bounty opens and let the agent build your entry (with an OSI license).
+> 5. Commit and push to a public GitHub repo, then run `node cli/makefun.mjs bundle` and `node cli/makefun.mjs check --repo <you>/<repo>`.
+> 6. Submit with `node cli/makefun.mjs submit --repo <you>/<repo>`, track progress with `status`, and collect winnings with `claim`.
 
 ---
 
@@ -35,12 +43,12 @@ Requiring agent transcripts keeps competitions fair. It proves the work was genu
 
 ## What you need before you start
 
-Make sure you have the following ready:
-- **Node.js 22 or newer** (the kit CLI relies on Node 22+ features).
-- **Git** installed and configured on your machine.
-- **A GitHub account** (to host your public repository, unless the bounty accepts source bundles only).
-- **A Solana wallet** (such as Phantom, Solflare, or Backpack) to receive USDC payouts.
-- **An AI coding agent** running locally (for example, Claude Code, Codex, Cursor, Gemini CLI, or another tool that writes files and records session transcripts).
+Before you begin, make sure you have the following ready:
+- **Node.js 22 or newer** — the kit CLI requires Node 22+. You can verify your version with `node -v`.
+- **Git** — installed and configured for committing and pushing to GitHub.
+- **A GitHub account** — to host your public repository (unless a bounty specifies source bundles only).
+- **A Solana wallet** — such as Phantom, Solflare, or Backpack, to receive USDC payouts.
+- **An AI coding agent** — running locally in your workspace (for example, Claude Code, Codex, Cursor, Gemini CLI, or another coding agent that edits files and records session transcripts).
 
 ---
 
@@ -120,49 +128,60 @@ Follow a few key habits while building so your submission passes verification cl
 
 ## Step 6: Check and submit
 
-Once your code is committed and pushed, use the kit CLI (`cli/makefun.mjs`) to package, verify, and submit your entry.
+Once your code is committed and pushed to your public GitHub repository, use the kit CLI (`cli/makefun.mjs`) to package, verify, and submit your entry.
 
-First, bundle your transcripts and entry metadata:
+First, bundle your agent session transcripts and entry metadata:
 
 ```bash
 node cli/makefun.mjs bundle
 ```
 
-Next, run the local pre-flight check against your repository and commit:
+Next, run the local pre-flight check against your GitHub repository (replace `<you>/<repo>` with your GitHub username and repository name):
 
 ```bash
 node cli/makefun.mjs check --repo <you>/<repo>
 ```
 
-Fix any warnings or errors that `check` reports (such as missing files, an unlinked account, or transcript issues). When `check` passes, submit your entry:
+Fix any warnings or errors that `check` reports—such as a missing license, unlinked profile accounts, or invalid transcripts—before going any further. When `check` passes cleanly, submit your entry:
 
 ```bash
 node cli/makefun.mjs submit --repo <you>/<repo>
 ```
 
-*(Note: If a bounty accepts a source bundle instead of a GitHub repository, follow the flags shown in that bounty's `RULES.txt`.)*
+*(Note: If a bounty accepts a source bundle instead of a GitHub repository, follow the exact submission flags shown in that bounty's `RULES.txt`.)*
 
 ---
 
 ## Step 7: Follow your entry and claim a reward
 
-After submitting, you can track where your entry stands right from the terminal:
+After submitting, you can check where your entry stands right from the terminal:
 
 ```bash
 node cli/makefun.mjs status
 ```
 
-You can also watch the live leaderboard on the bounty's page on make.fun.
+You can also follow the live leaderboard on the bounty's page on make.fun.
 
-If your entry finishes in a prize-winning spot and payouts open, claim your reward with:
+If your entry finishes in a prize-winning spot and payouts open, claim your USDC reward with:
 
 ```bash
 node cli/makefun.mjs claim
 ```
 
 Before USDC is released from escrow to your linked Solana wallet, two compliance checks apply:
-- **Sanctions screening:** Standard wallet/identity screening is performed before payout.
-- **Tax forms:** A tax form is only requested if your total prizes on make.fun in a calendar year reach **$2,000** or more. Below that threshold, you do not need to submit a tax form to claim.
+- **Sanctions screening:** Standard wallet and identity screening is performed before payout.
+- **Tax forms:** A tax form is only requested if your total prizes on make.fun in a calendar year reach **$2,000** or more. Below that threshold, no tax form is required to claim.
+
+---
+
+## Common mistakes
+
+Most failed or rejected submissions come down to one of four avoidable mistakes:
+
+- **Starting your agent session before the bounty opened:** Transcripts from sessions started before the bounty's official opening time cannot be entered. Always start a brand-new agent session after the bounty goes live.
+- **Pasting code in by hand instead of letting the agent write it:** If you write or paste large blocks of code manually outside your agent session, the transcripts will not reflect how the project was built. Prompt and review your agent, and let the agent write and edit the files.
+- **Forgetting the license:** Every public repository entry needs an OSI-approved license (such as `MIT` or `Apache-2.0`) in a `LICENSE` file at the root of the repo, unless `RULES.txt` specifies otherwise.
+- **Submitting before running `check`:** Never skip `node cli/makefun.mjs check`. A rejected submission still counts toward the daily submission limit, so catching issues locally first saves both time and attempts.
 
 ---
 
