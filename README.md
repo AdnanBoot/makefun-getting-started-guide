@@ -61,7 +61,7 @@ Head to [make.fun](https://make.fun) and sign in. You can create an account usin
 - **Discord**
 - **A Solana wallet**
 
-If you are new to the platform and found this guide helpful, you are warmly welcome to sign up through the author's referral link: [https://make.fun/r/9s0rhqbz](https://make.fun/r/9s0rhqbz) (referral code `9s0rhqbz`).
+If you are new to the platform and found this guide helpful, you are warmly welcome to sign up through the author's referral link: [https://make.fun/r/26nwh9gf](https://make.fun/r/26nwh9gf) (referral code `26nwh9gf`).
 
 Once you are signed in, open your **Profile** settings and make sure two things are linked:
 1. **Your GitHub account** — so make.fun can verify ownership of the repositories you submit.
@@ -193,7 +193,7 @@ Here is how referrals work in practice:
 - **First-touch attribution:** When someone visits make.fun through your link, that attribution binds for **60 days**.
 - **Real participation only:** Only genuine new accounts that actually sign up and take part in bounties count. Automated signups, duplicate accounts, or idle accounts that never participate do not count.
 
-If you still need to create an account, you can use [https://make.fun/r/9s0rhqbz](https://make.fun/r/9s0rhqbz) (`9s0rhqbz`).
+If you still need to create an account, you can use [https://make.fun/r/26nwh9gf](https://make.fun/r/26nwh9gf) (`26nwh9gf`).
 
 ---
 
